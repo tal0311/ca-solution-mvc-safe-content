@@ -7,19 +7,19 @@
     <title>Static Template</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body onload="loginInit()">
     <section class="container">
-      <section class="login flex hide">
+      <section class="login flex">
         <h2>Login</h2>
-        <form onsubmit="onLogin(this.value)">
-          <input type="text" placeholder="Enter username" />
-          <input type="password" placeholder="Enter password" />
+        <form onsubmit="onLogin(event)">
+          <input name="username" type="text" placeholder="Enter username" />
+          <input name="passWord" type="password" placeholder="Enter password" />
           <button>Login</button>
           <span>Sign in</span>
         </form>
       </section>
 
-      <section class="secret-content">
+      <section class="secret-content hide">
         <img src="./assets/images/secret-content.jpg" alt="" />
         <section class="actions-container flex">
           <button>Admin area</button>
@@ -27,8 +27,13 @@
         </section>
       </section>
     </section>
+
+    <section class="user-msg">
+      <h4 class="msg-txt">user msg</h4>
+    </section>
   </body>
 
+  <script src="js/storage.service.js"></script>
   <script src="js/login.service.js"></script>
   <script src="js/login.controller.js"></script>
 </html>
