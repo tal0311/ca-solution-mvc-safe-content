@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Static Template</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>there is no bundler or bundling involved!</h1>
+    <section class="container">
+      <section class="login flex">
+        <h2>Login</h2>
+        <form onsubmit="onLogin(this.value)">
+          <input type="text" placeholder="Enter username" />
+          <input type="password" placeholder="Enter password" />
+          <button>Login</button>
+          <span>Sign in</span>
+        </form>
+      </section>
+
+      <section class="secret-content hide">
+        <img src="./assets/images/secret-content.jpg" alt="" />
+        <section class="actions-container flex">
+          <button>Admin area</button>
+          <button>Logout</button>
+        </section>
+      </section>
+    </section>
   </body>
 
   <script src="js/login.service.js"></script>

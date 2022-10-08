@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  margin: 0;
+  height: 95vh;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: deepskyblue;
+}
+
+input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid lightskyblue;
+  padding: 0.5em;
+}
+input:focus {
+  outline: none;
+  background: lightskyblue;
+  color: #fff;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid lightskyblue;
+  background: transparent;
+  border-radius: 0.3em;
+  padding: 0.2em 1em;
+}
+button:hover {
+  color: #ffff;
+  background: deepskyblue;
+}
+.login,
+.secret-content {
+  height: 50vh;
+  width: 50vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 1em;
+}
+.login {
+  border-radius: 0.8em;
+  border: 1px solid lightskyblue;
+}
+.login form > * {
+  margin-bottom: 1rem;
+}
+.login span {
+  cursor: pointer;
+}
+.secret-content img {
+  width: 100%;
+}
+
+/* helper functions */
+.flex {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
