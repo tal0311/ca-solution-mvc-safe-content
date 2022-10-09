@@ -26,7 +26,6 @@ function onLogin(ev) {
   ev.preventDefault();
   const formData = new FormData(ev.target);
   const inputObject = Object.fromEntries(formData);
-  // convert the FormData object to a normal object
   const { username, passWord } = inputObject;
   if (!passWord && !username) {
     setUserMsg("Password or username are not correct");
