@@ -48,6 +48,10 @@ button:hover {
   color: #ffff;
   background: deepskyblue;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .login,
 .secret-content {
   height: 50vh;
