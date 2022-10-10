@@ -13,17 +13,18 @@
         <h2>Login</h2>
         <form onsubmit="onLogin(event)">
           <input name="username" type="text" placeholder="Enter username" />
-          <input name="passWord" type="password" placeholder="Enter password" />
+          <input name="password" type="password" placeholder="Enter password" />
           <button>Login</button>
           <span>Sign in</span>
         </form>
       </section>
 
       <section class="secret-content hide">
+        <h2 class="Welcome-user"></h2>
         <img src="./assets/images/secret-content.jpg" alt="" />
         <section class="actions-container flex">
-          <button>Admin area</button>
-          <button>Logout</button>
+          <button class="admin-section">Admin area</button>
+          <button onclick="onLogout()">Logout</button>
         </section>
       </section>
     </section>

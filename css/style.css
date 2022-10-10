@@ -55,7 +55,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  text-align: center;
   padding: 1em;
 }
 .login {

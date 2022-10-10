@@ -8,18 +8,30 @@ function loginInit() {
 
 function renderLogin() {
   const loggedInUser = getLoggedInUser();
+  const elLogin = document.querySelector(".login");
   console.log(loggedInUser);
 
-  const elLogin = document.querySelector(".login");
   const elSecret = document.querySelector(".secret-content");
   if (!loggedInUser) {
-    renderLoggedIdUser(elLogin, elSecret);
+    renderLoginForm(elLogin, elSecret);
+    setUserMsg("Enter username and password");
+    return;
   }
+  renderSafeContent(loggedInUser, elLogin, elSecret);
+  setUserMsg(`You are loggeed in as ${loggedInUser.username}`);
 }
 
-function renderLoggedIdUser(elLogin, elSecret) {
+function renderLoginForm(elLogin, elSecret) {
   elLogin.classList.remove("hide");
   elSecret.classList.add("hide");
+}
+function renderSafeContent(user, elLogin, elSecret) {
+  if (!user.isAdmin) {
+    document.querySelector(".admin-section").classList.add("hide");
+  }
+  document.querySelector(".Welcome-user").innerText = `Hello ${user.username}`;
+  elSecret.classList.remove("hide");
+  elLogin.classList.add("hide");
 }
 
 function onLogin(ev) {
@@ -31,6 +43,15 @@ function onLogin(ev) {
     setUserMsg("Password or username are not correct");
     return;
   }
+  doLogin(inputObject);
+  renderLogin();
+}
+
+function onLogout() {
+  console.log("log controlet");
+
+  doLogout();
+  renderLogin();
 }
 
 function setUserMsg(msg) {
