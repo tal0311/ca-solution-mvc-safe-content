@@ -1,16 +1,19 @@
 "use strict";
 
 function onInitAdmin() {
+  console.log("%c Admin Init", "color:lightgreen");
   createUsers();
   renderUsers();
   setUserMsg("Welcome to Admin space");
 }
 
 function renderUsers(renderBy = "table") {
+  // if table view this will render table head and tbody element
   document.querySelector(".user-list").innerHTML =
     renderBy === "table" ? getTableHead() : "";
+
   const users = getUsersForDisplay();
-  // setting dynamic paramers
+  // setting dynamic HTML element
   var selector = renderBy === "table" ? "tbody" : ".user-list";
   var mainEl = renderBy === "table" ? "tr" : "article";
   var subEl = renderBy === "table" ? "td" : "h4";

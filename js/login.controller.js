@@ -9,7 +9,6 @@ function loginInit() {
 function renderLogin() {
   const loggedInUser = getLoggedInUser();
   const elLogin = document.querySelector(".login");
-  console.log(loggedInUser);
 
   const elSecret = document.querySelector(".secret-content");
   if (!loggedInUser) {
@@ -55,8 +54,6 @@ function clearForm(form) {
 }
 
 function onLogout() {
-  console.log("log controlet");
-
   doLogout();
   renderLogin();
 }

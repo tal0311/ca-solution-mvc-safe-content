@@ -78,8 +78,6 @@ function createUsers() {
     );
   }
   gUsers = users;
-  console.log("crateing users");
-
   _saveUsers(KEY, gUsers);
 }
 
