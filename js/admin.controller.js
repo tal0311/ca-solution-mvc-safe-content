@@ -3,6 +3,7 @@
 function onInitAdmin() {
   createUsers();
   renderUsers();
+  setUserMsg("Welcome to Admin space");
 }
 
 function renderUsers(renderBy = "table") {
@@ -11,18 +12,18 @@ function renderUsers(renderBy = "table") {
   const users = getUsersForDisplay();
   // setting dynamic paramers
   var selector = renderBy === "table" ? "tbody" : ".user-list";
-  var primeryEl = renderBy === "table" ? "tr" : "article";
-  var secondryEl = renderBy === "table" ? "td" : "h4";
+  var mainEl = renderBy === "table" ? "tr" : "article";
+  var subEl = renderBy === "table" ? "td" : "h4";
   var strHtmls = users
     .map((user) => {
       var time = geDateTime(user.lastLoginAt);
       return `
-    <${primeryEl}>
-    <${secondryEl}>${user.id}</${secondryEl}>
-    <${secondryEl}>${user.username}</${secondryEl}>
-    <${secondryEl}> ${time.monthDay} ${time.hours} </${secondryEl}>
-    <${secondryEl}>${user.isAdmin ? "Admin" : "Not admin"}</${secondryEl}>
-    </${primeryEl}>
+    <${mainEl} onclick="onRemove('${user.id}')">
+    <${subEl}>${user.id}</${subEl}>
+    <${subEl}>${user.username}</${subEl}>
+    <${subEl}> ${time.monthDay} ${time.hours} </${subEl}>
+    <${subEl}>${user.isAdmin ? "Admin" : "Not admin"}</${subEl}>
+    </${mainEl}>
     `;
     })
     .join("");
@@ -34,8 +35,8 @@ function getTableHead() {
    <table border="1">
         <thead>
           <th>ID</th>
-          <th onclick="onSortBy('username')">User name</th>
-          <th onclick="onSortBy('lastLoginAt')">Last login time</th>
+          <th title="Sort items" onclick="onSortBy('username')">User name</th>
+          <th title="Sort items" onclick="onSortBy('lastLoginAt')">Last login time</th>
           <th>User Type</th>
         </thead>
         <tbody></tbody>
@@ -56,9 +57,27 @@ function onChangeDisplay(val) {
   renderUsers(val);
 }
 
-function onSortBy(val) {
-  console.log("val", val);
+function onRemove(userId) {
+  const loggedInUser = getLoggedInUser();
+  if (userId === loggedInUser.id) {
+    setUserMsg(`Can not remove admin user`);
+    return;
+  }
+  const isRemove = confirm("Are you sure you want to remove this user?");
+  if (isRemove) {
+    const user = removeUser(userId);
+    setUserMsg(`${user.username} has been removed`);
+  }
+}
 
+function onSortBy(val) {
   setSortedBy(val);
   renderUsers();
+}
+
+function setUserMsg(msg) {
+  document.querySelector(".user-msg").classList.toggle("open");
+  if (!msg) return;
+  document.querySelector(".msg-txt").innerText = msg || "";
+  setTimeout(setUserMsg, 2000);
 }

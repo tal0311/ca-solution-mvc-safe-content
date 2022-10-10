@@ -29,7 +29,7 @@ function renderSafeContent(user, elLogin, elSecret) {
   if (!user.isAdmin) {
     document.querySelector(".admin-section").classList.add("hide");
   }
-  document.querySelector(".Welcome-user").innerText = `Hello ${user.username}`;
+  document.querySelector(".welcome-user").innerText = `Hello ${user.username}`;
   elSecret.classList.remove("hide");
   elLogin.classList.add("hide");
 }

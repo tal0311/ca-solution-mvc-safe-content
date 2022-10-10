@@ -131,7 +131,15 @@ a {
   border: 1px solid lightskyblue;
   border-radius: var(--b-radius);
 }
-
+table {
+  width: 75%;
+}
+td:not(:first-child) {
+  text-align: center;
+}
+th:not(:last-child, :first-child) {
+  cursor: pointer;
+}
 article:hover::after {
   content: "X";
   opacity: 0.5;

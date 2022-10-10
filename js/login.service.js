@@ -54,6 +54,13 @@ function doLogout() {
   console.log("logout", localStorage.LOGGEDIN_USER);
 }
 
+function removeUser(userId) {
+  const idx = gUsers.findIndex((user) => user.id === userId);
+  const user = gUsers.splice(idx, 1);
+  _saveUsers(KEY, gUsers);
+  return user;
+}
+
 function setSortedBy(val) {
   gSortBy = {
     val,
