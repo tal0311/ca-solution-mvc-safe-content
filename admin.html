@@ -4,13 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Admin section</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body onload="onInitAdmin()">
     <h1>admin</h1>
-
+    <div class="display-actions-container flex">
+      <button onclick="onChangeDisplay('cards')">
+        <i class="fa-brands fa-buromobelexperte"></i>
+      </button>
+      <button onclick="onChangeDisplay('table')">
+        <i class="fa-solid fa-list"></i>
+      </button>
+    </div>
     <section class="user-list"></section>
 
     <button onclick="window.location.replace('/index.html')">Back</button>
+
+    <script src="js/storage.service.js"></script>
+    <script src="js/login.service.js"></script>
+    <script src="js/admin.controller.js"></script>
   </body>
 </html>

@@ -3,8 +3,33 @@ const KEY = "usersDB";
 const LOGGEDIN_USER = "loggedInUser";
 var gLoggedInUser = null;
 var gUsers = null;
+var gSortBy = {
+  val: "",
+  des: 1
+};
+
 function getLoggedInUser() {
   return _loadUsers(LOGGEDIN_USER);
+}
+function getUsersForDisplay() {
+  let users = gUsers;
+  _sortUers(users, gSortBy);
+
+  return users;
+}
+
+function _sortUers(users, sortBy) {
+  if (!sortBy.val) return;
+  switch (sortBy.val) {
+    case "lastLoginAt":
+      users.sort((a, b) => (b[sortBy.val] - a[sortBy.val]) * sortBy.des);
+      break;
+    default:
+      users.sort(
+        (a, b) => a[sortBy.val].localeCompare(b[sortBy.val]) * sortBy.des
+      );
+      break;
+  }
 }
 
 function doLogin(inputs) {
@@ -19,6 +44,7 @@ function doLogin(inputs) {
     gLoggedInUser = user;
   }
   _saveUsers(LOGGEDIN_USER, gLoggedInUser);
+  _saveUsers(KEY, gUsers);
   return user;
 }
 
@@ -26,6 +52,13 @@ function doLogout() {
   localStorage.removeItem(LOGGEDIN_USER);
   gLoggedInUser = null;
   console.log("logout", localStorage.LOGGEDIN_USER);
+}
+
+function setSortedBy(val) {
+  gSortBy = {
+    val,
+    des: gSortBy.des === 1 ? -1 : 1
+  };
 }
 
 function createUsers() {
@@ -38,6 +71,8 @@ function createUsers() {
     );
   }
   gUsers = users;
+  console.log("crateing users");
+
   _saveUsers(KEY, gUsers);
 }
 

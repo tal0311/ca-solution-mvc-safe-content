@@ -17,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
   color: deepskyblue;
+  flex-direction: column;
 }
 
 input {
@@ -41,7 +42,7 @@ button {
   border: 1px solid lightskyblue;
   background: transparent;
   border-radius: var(--b-radius);
-  padding: 0.2em 1em;
+  padding: 0.5em 1.2em;
   color: deepskyblue;
 }
 button:hover {
@@ -109,4 +110,36 @@ a {
 
 .debug {
   border: 1px solid yellowgreen;
+}
+
+.display-actions-container {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.user-list {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 75vw;
+  gap: 30px;
+}
+.user-list article {
+  position: relative;
+  text-align: center;
+  padding: 1em;
+  border: 1px solid lightskyblue;
+  border-radius: var(--b-radius);
+}
+
+article:hover::after {
+  content: "X";
+  opacity: 0.5;
+  font-size: 1em;
+  position: absolute;
+  color: lightcoral;
+  text-align: center;
+  bottom: 0.2em;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
 }
