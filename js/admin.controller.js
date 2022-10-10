@@ -32,7 +32,7 @@ function renderUsers(renderBy = "table") {
 
 function getTableHead() {
   return `
-   <table border="1">
+   <table>
         <thead>
           <th>ID</th>
           <th title="Sort items" onclick="onSortBy('username')">User name</th>

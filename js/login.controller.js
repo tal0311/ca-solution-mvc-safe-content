@@ -26,8 +26,10 @@ function renderLoginForm(elLogin, elSecret) {
   elSecret.classList.add("hide");
 }
 function renderSafeContent(user, elLogin, elSecret) {
+  const elAdminBtn = document.querySelector(".admin-section");
+  elAdminBtn.classList.remove("hide");
   if (!user.isAdmin) {
-    document.querySelector(".admin-section").classList.add("hide");
+    elAdminBtn.classList.add("hide");
   }
   document.querySelector(".welcome-user").innerText = `Hello ${user.username}`;
   elSecret.classList.remove("hide");
@@ -44,7 +46,12 @@ function onLogin(ev) {
     return;
   }
   doLogin(inputObject);
+  clearForm(ev.target);
   renderLogin();
+}
+
+function clearForm(form) {
+  form.reset();
 }
 
 function onLogout() {

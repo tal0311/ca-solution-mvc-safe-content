@@ -133,12 +133,26 @@ a {
 }
 table {
   width: 75%;
+  border-radius: var(--b-radius);
 }
+
+table,
+tr,
+td {
+  border: 0.5px solid black;
+  border-collapse: collapse;
+}
+
 td:not(:first-child) {
   text-align: center;
 }
 th:not(:last-child, :first-child) {
   cursor: pointer;
+}
+th:not(:last-child, :first-child):hover {
+  background: lightskyblue;
+  color: #ffff;
+  border-radius: var(--b-radius);
 }
 article:hover::after {
   content: "X";
